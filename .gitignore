@@ -1,2 +1,10 @@
 /.idea/
 .idea/
+/assets/css/default.css
+/assets/style.css
+/scss/main.scss
+/display.html
+/package.json
+/package-lock.json
+/test.html
+/node_modules/
