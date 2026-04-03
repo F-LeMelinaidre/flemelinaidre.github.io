@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propositions details/dl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap"
+          rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #061820;
+            --bg-mid: #081a22;
+            --border: #122432;
+            --border-alt: #1e3848;
+            --text-primary: #ddf0f8;
+            --text-muted: #8098a0;
+            --text-role: #a8c8d8;
+            --accent-cool: #00b0d0;
+            --accent-warm: #c8a020;
+            --font-serif: 'Playfair Display', 'Georgia', serif;
+            --font-body: 'Lora', 'Georgia', serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            padding: 4rem;
+            display: grid;
+            grid-template-columns:1fr 1fr 1fr;
+            gap: 3rem
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 0.6rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            margin-bottom: 2rem;
+            grid-column: 1/-1;
+            display: flex;
+            align-items: center;
+            gap: 1rem
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent-warm), transparent);
+            opacity: 0.5
+        }
+
+        .card {
+            background: var(--bg-mid);
+            padding: 2rem;
+            border: 1px solid var(--border)
+        }
+
+        .label {
+            font-size: 0.55rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            margin-bottom: 1rem;
+            font-style: italic
+        }
+
+        details summary {
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-cool);
+            cursor: pointer;
+            font-style: italic;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem
+        }
+
+        details summary::before {
+            content: '+ '
+        }
+
+        details[open] summary::before {
+            content: '− '
+        }
+
+        details summary::-webkit-details-marker {
+            display: none
+        }
+
+        /* PROPOSITION A — bloc titre + contenu en colonne */
+        .prop-a dl {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem
+        }
+
+        .prop-a dt {
+            font-size: 0.68rem;
+            color: var(--text-role);
+            font-style: italic;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            margin-bottom: 0.2rem
+        }
+
+        .prop-a dd {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-style: italic;
+            padding-left: 0.8rem;
+            border-left: 1px solid var(--border)
+        }
+
+        .prop-a dl dl {
+            margin-top: 0.4rem;
+            padding-left: 0.8rem;
+            border-left: 1px solid var(--border-alt)
+        }
+
+        /* PROPOSITION B — deux colonnes côte à côte */
+        .prop-b dl {
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 0.3rem 1.5rem
+        }
+
+        .prop-b dt {
+            font-size: 0.62rem;
+            color: var(--text-role);
+            font-style: italic;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.3rem
+        }
+
+        .prop-b dd {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-style: italic
+        }
+
+        .prop-b dl dl {
+            grid-column: 1/-1;
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 0.3rem 1.5rem;
+            margin-top: 0.6rem
+        }
+
+        .prop-b dl dl dt {
+            font-size: 0.58rem;
+            color: var(--text-muted);
+            border-bottom: none;
+            font-weight: 400
+        }
+
+        /* PROPOSITION C — tags groupés */
+        .prop-c dl {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem
+        }
+
+        .prop-c dt {
+            font-size: 0.62rem;
+            color: var(--text-role);
+            font-style: italic;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            margin-bottom: 0.4rem
+        }
+
+        .prop-c dd {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem
+        }
+
+        .prop-c dd span {
+            font-family: var(--font-sans);
+            font-size: 0.55rem;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.6rem;
+            border: 1px solid var(--border);
+            color: var(--text-muted)
+        }
+
+        .prop-c dl dl {
+            margin-top: 0.4rem;
+            padding-left: 0.8rem;
+            border-left: 1px solid var(--border-alt)
+        }
+
+        .prop-c dl dl dt {
+            color: var(--accent-cool);
+            font-size: 0.58rem
+        }
+    </style>
+</head>
+<body>
+
+<h2>Propositions agencement détail</h2>
+
+<!-- A -->
+<div class="card prop-a">
+    <div class="label">A — Colonne</div>
+    <details open>
+        <summary>Voir le détail</summary>
+        <dl>
+            <dt>Mécanicien</dt>
+            <dd>Montage moteur, accessoires et essais</dd>
+            <dt>Électricien</dt>
+            <dd>Pose faisceau électrique, accessoires et essais</dd>
+            <dt>Plombier</dt>
+            <dd>Plomberie, chauffage et essais</dd>
+            <dt>Accastilleur</dt>
+            <dd>Pose accastillage</dd>
+            <dt>Stratifieur</dt>
+            <dd>
+                <dl>
+                    <dt>Assemblage</dt>
+                    <dd>Bordé · Nacelle · Pont · Roof · Cloisonnage · Puits de dérive · Tube de jaumière · Aménagement
+                    </dd>
+                    <dt>Fabrication</dt>
+                    <dd>Cirage de moule · Drapage · Infusion · Pièces sur mesure</dd>
+                </dl>
+            </dd>
+        </dl>
+    </details>
+</div>
+
+<!-- B -->
+<div class="card prop-b">
+    <div class="label">B — Deux colonnes</div>
+    <details open>
+        <summary>Voir le détail</summary>
+        <dl>
+            <dt>Mécanicien</dt>
+            <dd>Montage moteur, accessoires et essais</dd>
+            <dt>Électricien</dt>
+            <dd>Pose faisceau électrique, accessoires et essais</dd>
+            <dt>Plombier</dt>
+            <dd>Plomberie, chauffage et essais</dd>
+            <dt>Accastilleur</dt>
+            <dd>Pose accastillage</dd>
+            <dt>Stratifieur</dt>
+            <dd>
+                <dl>
+                    <dt>Assemblage</dt>
+                    <dd>Bordé · Nacelle · Pont · Roof · Cloisonnage · Puits de dérive · Tube de jaumière · Aménagement
+                    </dd>
+                    <dt>Fabrication</dt>
+                    <dd>Cirage de moule · Drapage · Infusion · Pièces sur mesure</dd>
+                </dl>
+            </dd>
+        </dl>
+    </details>
+</div>
+
+<!-- C -->
+<div class="card prop-c">
+    <div class="label">C — Tags groupés</div>
+    <details open>
+        <summary>Voir le détail</summary>
+        <dl>
+            <dt>Mécanicien</dt>
+            <dd><span>Montage moteur</span><span>Accessoires</span><span>Essais</span></dd>
+            <dt>Électricien</dt>
+            <dd><span>Faisceau électrique</span><span>Accessoires</span><span>Essais</span></dd>
+            <dt>Plombier</dt>
+            <dd><span>Plomberie</span><span>Chauffage</span><span>Essais</span></dd>
+            <dt>Accastilleur</dt>
+            <dd><span>Pose accastillage</span></dd>
+            <dt>Stratifieur</dt>
+            <dd>
+                <dl>
+                    <dt>Assemblage</dt>
+                    <dd><span>Bordé</span><span>Nacelle</span><span>Pont</span><span>Roof</span><span>Cloisonnage</span><span>Puits de dérive</span><span>Tube de jaumière</span><span>Aménagement</span>
+                    </dd>
+                    <dt>Fabrication</dt>
+                    <dd>
+                        <span>Cirage de moule</span><span>Drapage</span><span>Infusion</span><span>Pièces sur mesure</span>
+                    </dd>
+                </dl>
+            </dd>
+        </dl>
+    </details>
+</div>
+
+</body>
+</html>
